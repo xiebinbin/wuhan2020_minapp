@@ -16,14 +16,14 @@ yarn dev:weapp
 
 # 任务列表
 
-- [] 关于我们(/pages/about/index.tsx)
+- [] 关于我们(/pages/about/index.tsx) @小伙子
 - [] 创建需求(/pages/demand-side/create/index.tsx)
 - [] 需求服务详情(/pages/demand-side/detail/index.tsx)
 - [] 创建援助(/pages/supplier/create/index.tsx)
 - [] 援助详情(/pages/supplier/detail/index.tsx)
-- [] 收藏(/pages//favorite/index.tsx)
-- [] 个人中心-首页(/pages//home/index/index.tsx)
-- [] 个人中心-设置(/pages//home/setting/index.tsx)
+- [] 收藏(/pages//favorite/index.tsx) @小伙子
+- [] 个人中心-首页(/pages/home/index/index.tsx) @小伙子
+- [] 个人中心-设置(/pages/home/setting/index.tsx)
 - [] 个人中心-我发布的需求(/pages/home/supplier/index.tsx)
 - [] 个人中心-我发布的援助(/pages/home/demand-side/index.tsx)
 - [] 首页(/pages/index/index.tsx)
