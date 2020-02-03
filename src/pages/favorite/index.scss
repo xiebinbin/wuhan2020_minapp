@@ -1,0 +1,21 @@
+@import "~taro-ui/dist/style/components/flex.scss";
+@import "~taro-ui/dist/style/components/article.scss";
+
+.favorite-containter {
+    padding-top:100rpx;
+}
+
+.favorite-block-padding{
+    padding: 10rpx;
+}
+
+.favorite-block-img {
+    width: 100%;
+    height: 200rpx;
+}
+
+.favorite-block-description {
+    height: 100rpx;
+    overflow: hidden;
+}
+  
