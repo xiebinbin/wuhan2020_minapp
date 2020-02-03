@@ -16,7 +16,9 @@
       }
     },
     "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-empty-function": ["warn"]
+    "@typescript-eslint/no-empty-function": ["warn"],
+    "camelcase": 0,
+    "@typescript-eslint/camelcase": "*"
   },
   "parserOptions": {
     "ecmaFeatures": {

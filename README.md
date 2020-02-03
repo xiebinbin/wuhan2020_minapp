@@ -26,10 +26,11 @@ yarn dev:weapp
 - [] 个人中心-设置(/pages/home/setting/index.tsx)
 - [] 个人中心-我发布的需求(/pages/home/supplier/index.tsx)
 - [] 个人中心-我发布的援助(/pages/home/demand-side/index.tsx)
-- [] 首页(/pages/index/index.tsx)
+- [] 首页(/pages/index/index.tsx) @南波万
 - [] 登录(/pages/login/index.tsx) @南波万
 
 # 常用文档
 
 <p><a href="https://taro-docs.jd.com/taro/docs/README.html">taro</a></p>
+<p><a href="https://orgnext.modao.cc/app/5hlr3r6ga8rk63tk88xmxrj11ntqh">产品原型 密码999</a></p>
 <p><a href="https://graphql.cn/">graphql</a></p>
