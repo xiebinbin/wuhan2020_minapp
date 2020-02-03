@@ -23,9 +23,9 @@ yarn dev:weapp
 - [] 援助详情(/pages/supplier/detail/index.tsx)
 - [] 收藏(/pages//favorite/index.tsx) @小伙子
 - [] 个人中心-首页(/pages/home/index/index.tsx) @小伙子
-- [] 个人中心-设置(/pages/home/setting/index.tsx)
-- [] 个人中心-我发布的需求(/pages/home/supplier/index.tsx)
-- [] 个人中心-我发布的援助(/pages/home/demand-side/index.tsx)
+- [] 个人中心-设置(/pages/home/setting/index.tsx)@周明
+- [] 个人中心-我发布的需求(/pages/home/supplier/index.tsx)@周明
+- [] 个人中心-我发布的援助(/pages/home/demand-side/index.tsx)@周明
 - [] 首页(/pages/index/index.tsx) @廖木祺
 - [*] 登录(/pages/login/index.tsx) @南波万
 
