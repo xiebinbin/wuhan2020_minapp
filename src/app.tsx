@@ -1,6 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 
+import 'taro-ui/dist/style/index.scss';
 import Index from './pages/index'
 
 import configStore from './store'
@@ -27,6 +28,7 @@ class App extends Component {
   config: Config = {
     pages: [
       'pages/index/index',
+      'pages/login/index',
       'pages/home/index/index',
       'pages/favorite/index',
       'pages/about/index'
@@ -35,7 +37,8 @@ class App extends Component {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      navigationStyle: 'custom'
     },
     tabBar: {
       list: [{
