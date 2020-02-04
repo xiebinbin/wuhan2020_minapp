@@ -1,4 +1,28 @@
-.index {
-  flex-direction: column;
-  width: 100%;
+@import "~taro-ui/dist/style/components/flex.scss";
+@import "~taro-ui/dist/style/components/article.scss";
+@import "~taro-ui/dist/style/components/list.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-ui/dist/style/components/avatar.scss";
+@import "~taro-ui/dist/style/components/button.scss";
+@import "~taro-ui/dist/style/components/loading.scss";
+
+.profile-containter {
+    padding-top:100rpx;
+}
+
+.profile-header {
+    height: 200rpx;
+    overflow: hidden;
+}
+
+.profile-header-imgView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logout-button{
+    position:fixed;
+    left:0;bottom:0;
+    width:100%
 }
