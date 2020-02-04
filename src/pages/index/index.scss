@@ -1,4 +1,85 @@
+@import "~taro-ui/dist/style/components/flex.scss";
+
+
 .index {
   flex-direction: column;
   width: 100%;
+  font-weight: bold;
+}
+.index-content {
+  padding-top: 80px;
+  width: 100%;
+}
+.status-bar {
+  width: 100%;
+  background: burlywood;
+}
+.filter-search-bar {
+  height: 80px;
+}
+.city-filter {
+  height: 50px;
+  width: 100px;
+  background: dodgerblue;
+}
+.index-content {
+}
+.index-list {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+}
+.index-item {
+  background: #ffffff;
+  height: 400px;
+  border: 2px solid #dcdcdc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.index-item-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-head-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.index-item-avatar {
+  height: 80px;
+  width: 80px;
+}
+.index-item-image {
+  height: 150px;
+  width: 150px;
+  margin: 20px;
+}
+.index-item-head-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.head-title-name {
+  font-size: 28px;
+  color: #333333;
+}
+.head-title-data {
+  font-size: 18px;
+  color: #c5c5c5;
+}
+.index-item-head-type {
+  font-size: 20px;
+  color: #b5b5b5;
+}
+.item-images {
+  display: flex;
+  flex-direction: row;
+}
+.index-item-content {
+  margin-top: 40px;
+  font-size: 22px;
+  color: #a5a5a5;
 }
