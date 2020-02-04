@@ -5,6 +5,9 @@ import { AtList, AtListItem, AtAvatar, AtButton } from "taro-ui"
 import mockData from "./mockData"
 import './index.scss'
 
+const SETTING_PAGE = "/pages/home/setting/index"
+const MY_REQUEST_PAGE = "/pages/home/demand-side/index"
+
 class Index extends Component {
     config: Config = {
     navigationBarTitleText: '我的'
@@ -14,8 +17,10 @@ class Index extends Component {
     data: mockData
   }
 
-  handleClickInfo = () => {
-    console.log("Clicked")
+  handleClickInfo = (page) => {
+    Taro.navigateTo({
+      url: page
+    })
   }
 
   handleLogout = () => {
@@ -43,9 +48,9 @@ class Index extends Component {
           </View>
         </View>
         <AtList hasBorder={false}>
-          <AtListItem title='我的发布' arrow='right' onClick={this.handleClickInfo} />
-          <AtListItem title='编辑资料' arrow='right' onClick={this.handleClickInfo}/>
-          <AtListItem title='关于我们' arrow='right' onClick={this.handleClickInfo}/>
+          <AtListItem title='我的发布' arrow='right' onClick={() => {this.handleClickInfo(MY_REQUEST_PAGE)}} />
+          <AtListItem title='编辑资料' arrow='right' onClick={() => {this.handleClickInfo(SETTING_PAGE)}} />
+          <AtListItem title='关于我们' arrow='right' onClick={() => {this.handleClickInfo(SETTING_PAGE)}}/>
         </AtList>
         <View className="profile-logout-button">
          <AtButton type='primary' onClick={this.handleLogout}>退出登录</AtButton>

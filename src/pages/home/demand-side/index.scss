@@ -1,4 +1,12 @@
-.index {
-  flex-direction: column;
-  width: 100%;
+@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-ui/dist/style/components/nav-bar.scss";
+@import "~taro-ui/dist/style/components/card.scss";
+@import "~taro-ui/dist/style/components/article.scss";
+
+.demand-side {
+  padding-top: 100rpx;
+}
+
+.demand-card-padding {
+  padding: 10rpx;
 }

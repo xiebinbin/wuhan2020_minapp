@@ -1,4 +1,23 @@
-.index {
-  flex-direction: column;
-  width: 100%;
+@import "~taro-ui/dist/style/components/nav-bar.scss";
+@import "~taro-ui/dist/style/components/avatar.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+
+.setting {
+  padding-top: 100rpx;
+}
+
+.setting-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+  border-bottom: 1rpx solid gray;
+}
+
+.setting-info-padding{
+  padding-top: 40rpx;
+}
+
+.setting-text-center {
+  text-align: center;
 }

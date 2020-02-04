@@ -30,8 +30,11 @@ class App extends Component {
       'pages/index/index',
       'pages/login/index',
       'pages/home/index/index',
+      'pages/home/setting/index',
+      'pages/home/demand-side/index',
       'pages/favorite/index',
-      'pages/about/index'
+      'pages/about/index',
+
     ],
     window: {
       backgroundTextStyle: 'light',
