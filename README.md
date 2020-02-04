@@ -15,7 +15,8 @@ yarn dev:weapp
 ```
 
 # 任务列表
-
+- [] 编辑资料() @小伙子
+- [] 我的发布() @小伙子
 - [] 关于我们(/pages/about/index.tsx) @小伙子
 - [] 创建需求(/pages/demand-side/create/index.tsx) @童欧巴
 - [] 需求服务详情(/pages/demand-side/detail/index.tsx) @童欧巴
