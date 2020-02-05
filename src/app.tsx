@@ -17,14 +17,6 @@ import './app.scss'
 const store = configStore()
 
 class App extends Component {
-
-  /**
-   * 指定config的类型声明为: Taro.Config
-   *
-   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-   */
   config: Config = {
     pages: [
       'pages/index/index',
@@ -46,28 +38,23 @@ class App extends Component {
     tabBar: {
       list: [{
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "icons/tabbar/home.png",
+        "selectedIconPath": "icons/tabbar/home_check.png",
       }, {
         "pagePath": "pages/favorite/index",
-        "text": "收藏"
+        "text": "收藏",
+        "iconPath": "icons/tabbar/favorite.png",
+        "selectedIconPath": "icons/tabbar/favorite_check.png",
       },
       {
         "pagePath": "pages/home/index/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "icons/tabbar/ucenter.png",
+        "selectedIconPath": "icons/tabbar/ucenter_check.png",
       }]
     },
   }
-
-  componentDidMount () {}
-
-  componentDidShow () {}
-
-  componentDidHide () {}
-
-  componentDidCatchError () {}
-
-  // 在 App 类中的 render() 函数没有实际作用
-  // 请勿修改此函数
   render () {
     return (
       <Provider store={store}>

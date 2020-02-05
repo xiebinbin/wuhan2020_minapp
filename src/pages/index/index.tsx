@@ -7,9 +7,8 @@ import { connect } from '@tarojs/redux'
 import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.scss'
-import { queryAllCate } from '../../graphql/query/cate/index'
 import mockSuppliers from "./mockSupplierData"
-
+import Uploader from '../../util/uploader'
 // #region 书写注意
 //
 // 目前 typescript 版本还无法在装饰器模式下将 Props 注入到 Taro.Component 中的 props 属性
@@ -79,9 +78,6 @@ class Index extends Component {
     console.log(this.props, nextProps)
   }
   componentDidMount () {
-    queryAllCate().then((data) => {
-      console.log(data)
-    })
     Taro.getSystemInfo({
       success: res => {
         console.log(res.statusBarHeight);
@@ -114,8 +110,12 @@ class Index extends Component {
   renderSuppliers () {
       const { supplierList } = this.state
 
-      let renderList = supplierList.map( item =>
-          <View className='index-item'>
+      const renderList = supplierList.map( item =>
+          <View className='index-item' onClick={() => {
+            Uploader().then((rep) => {
+              console.log(rep)
+            })
+          }}>
             <View className='index-item-head'>
               <View className='item-head-left'>
                 <Image

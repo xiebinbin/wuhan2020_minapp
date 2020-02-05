@@ -1,7 +1,7 @@
 import ApolloClient, { InMemoryCache } from 'apollo-boost'
 import Taro from '@tarojs/taro';
 
-const domain = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'https://ssyd.knowledgebird.cn/';
+const domain = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'https://wh.xmw.red/';
 
 const cache = new InMemoryCache()
 export default (security = false) => {
