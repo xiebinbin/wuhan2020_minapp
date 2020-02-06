@@ -1,14 +1,17 @@
-import { ComponentClass } from 'react'
-import Taro, { Component, Config } from '@tarojs/taro'
-import {Image, View} from '@tarojs/components'
+import {ComponentClass} from 'react'
+import Taro, {Component, Config} from '@tarojs/taro'
+import {Image, Picker, View} from '@tarojs/components'
 import {AtSearchBar, AtTabs, AtTabsPane} from "taro-ui";
-import { connect } from '@tarojs/redux'
+import {connect} from '@tarojs/redux'
 
-import { add, minus, asyncAdd } from '../../actions/counter'
+import {add, minus, asyncAdd} from '../../actions/counter'
 
 import './index.scss'
 import mockSuppliers from "./mockSupplierData"
+import chinaCityData from "./chinaCityData"
 import Uploader from '../../util/uploader'
+import typeData from "./typeData";
+import triangleIcon from "../../../assets/triangle.png"
 // #region 书写注意
 //
 // 目前 typescript 版本还无法在装饰器模式下将 Props 注入到 Taro.Component 中的 props 属性
@@ -41,43 +44,48 @@ interface Index {
   props: IProps;
 }
 
-@connect(({ counter }) => ({
+@connect(({counter}) => ({
   counter
 }), (dispatch) => ({
-  add () {
+  add() {
     dispatch(add())
   },
-  dec () {
+  dec() {
     dispatch(minus())
   },
-  asyncAdd () {
+  asyncAdd() {
     dispatch(asyncAdd())
   }
 }))
 class Index extends Component {
 
-    /**
+  /**
    * 指定config的类型声明为: Taro.Config
    *
    * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
    * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
-    config: Config = {
+  config: Config = {
     navigationBarTitleText: '首页'
   }
 
   state = {
-      value: '',
-      current: 0,
-      statusBarHeight: '',
-      supplierList: mockSuppliers,
+    value: '',
+    current: 0,
+    statusBarHeight: '',
+    supplierList: mockSuppliers,
+    citySelector: chinaCityData,
+    citySelectorChecked: "武汉",
+    typeSelector: typeData,
+    typeSelectorChecked: "全部"
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
-  componentDidMount () {
+
+  componentDidMount() {
     Taro.getSystemInfo({
       success: res => {
         console.log(res.statusBarHeight);
@@ -87,70 +95,92 @@ class Index extends Component {
       }
     }).then(res => console.log(res))
   }
-  componentWillUnmount () {
+
+  componentWillUnmount() {
   }
 
-  componentDidShow () { }
+  componentDidShow() {
+  }
 
-  componentDidHide () { }
+  componentDidHide() {
+  }
 
-  onChange (value) {
+  onSearchChange(value) {
     this.setState({
       value: value
     })
     return value
   }
 
-  handleClick (value) {
+  onSearchActionClick () {
+    console.log('开始搜索')
+  }
+
+  onCitySelectorChange = e => {
+    console.log(e.detail.value);
+    this.setState({
+      citySelectorChecked: this.state.citySelector[e.detail.value]
+    })
+  }
+
+  onTypeSelectorChange = e => {
+    console.log(e.detail.value);
+    this.setState({
+      typeSelectorChecked: this.state.typeSelector[e.detail.value]
+    })
+  }
+
+  handleClick(value) {
     this.setState({
       current: value
     })
   }
 
-  renderSuppliers () {
-      const { supplierList } = this.state
+  getImages(images) {
+    return images.map(image =>
+      <Image
+        className='index-item-image'
+        src={image}
+      />
+    )
+  }
 
-      const renderList = supplierList.map( item =>
-          <View className='index-item' onClick={() => {
-            Uploader().then((rep) => {
-              console.log(rep)
-            })
-          }}>
-            <View className='index-item-head'>
-              <View className='item-head-left'>
-                <Image
-                  className='index-item-avatar'
-                  src={item.userAvatar}
-                />
-                <View className='index-item-head-title'>
-                  <View className='head-title-name'>{item.userName}</View>
-                  <View className='head-title-data'>{item.uploadDate}</View>
-                </View>
-              </View>
-              <View className='index-item-head-type'>{item.type}</View>
-            </View>
-            <View className='index-item-content'>
-              {item.message}
-            </View >
-            <View className='item-images'>
-              {
-                item.images.map ( image =>
-                  <Image
-                    className='index-item-image'
-                    src={image}
-                  />
-                )
-              }
+  renderSuppliers() {
+    const {supplierList} = this.state
+
+    const renderList = supplierList.map(item =>
+      <View className='index-item' onClick={() => {
+        Uploader().then((rep) => {
+          console.log(rep)
+        })
+      }}>
+        <View className='index-item-head'>
+          <View className='item-head-left'>
+            <Image
+              className='index-item-avatar'
+              src={item.userAvatar}
+            />
+            <View className='index-item-head-title'>
+              <View className='head-title-name'>{item.userName}</View>
+              <View className='head-title-data'>{item.uploadDate}</View>
             </View>
           </View>
-      )
-      return <View className='index-list'>{renderList}</View>;
+          <View className='index-item-head-type'>{item.type}</View>
+        </View>
+        <View className='index-item-content'>
+          {item.message}
+        </View>
+        <View className='item-images'>
+          {this.getImages(item.images)}
+        </View>
+      </View>
+    )
+    return <View className='index-list'>{renderList}</View>;
   }
 
 
-
-  render () {
-    const tabList = [{ title: '需求' }, { title: '援助' }]
+  render() {
+    const tabList = [{title: '需求'}, {title: '援助'}]
     return (
       <View className='index'>
         {/*<Button className='add_btn' onClick={this.props.add}>+</Button>*/}
@@ -163,22 +193,44 @@ class Index extends Component {
         {/*}}>关于我们</Button>*/}
         {/*<View><Text>{this.props.counter.num}</Text></View>*/}
         {/*<View><Text>首页</Text></View>*/}
-        <View className='status-bar' style={{ height: this.state.statusBarHeight}}></View>
+        <View className='status-bar' style={{height: this.state.statusBarHeight}}></View>
         <View className='index-content'>
           <View className='filter-search-bar'>
-            <AtSearchBar
-              value={this.state.value}
-              onChange={this.onChange.bind(this)}
-            />
+            <View className='city-selector'>
+              <Picker mode='selector' range={this.state.citySelector} onChange={this.onCitySelectorChange} value={0}>
+                <View className='picker'>
+                  {this.state.citySelectorChecked}
+                  <Image className='selectIcon' src={triangleIcon}/>
+                </View>
+              </Picker>
+            </View>
+            <View className='search-bar'>
+              <AtSearchBar
+                actionName='搜索'
+                value={this.state.value}
+                onChange={this.onSearchChange.bind(this)}
+                onActionClick={this.onSearchActionClick.bind(this)}
+              />
+            </View>
           </View>
-          <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
-            <AtTabsPane current={this.state.current} index={0} >
-              {this.renderSuppliers()}
-            </AtTabsPane>
-            <AtTabsPane current={this.state.current} index={1}>
-              <View style='height:100%;padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>标签页二的内容</View>
-            </AtTabsPane>
-          </AtTabs>
+          <View className='type-selector'>
+            <Picker mode='selector' range={this.state.typeSelector} onChange={this.onTypeSelectorChange} value={0}>
+              <View className='picker'>
+                {this.state.typeSelectorChecked}
+                <Image className='selectIcon' src={triangleIcon}/>
+              </View>
+            </Picker>
+          </View>
+          <View className='index-tabs'>
+            <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
+              <AtTabsPane current={this.state.current} index={0}>
+                {this.renderSuppliers()}
+              </AtTabsPane>
+              <AtTabsPane current={this.state.current} index={1}>
+                {this.renderSuppliers()}
+              </AtTabsPane>
+            </AtTabs>
+          </View>
         </View>
       </View>
     )

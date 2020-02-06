@@ -7,6 +7,7 @@
   font-weight: bold;
 }
 .index-content {
+  position: relative;
   padding-top: 80px;
   width: 100%;
 }
@@ -16,18 +17,25 @@
 }
 .filter-search-bar {
   height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
-.city-filter {
-  height: 50px;
+.search-bar {
+  flex: 1;
+}
+.city-selector {
   width: 100px;
-  background: dodgerblue;
+  font-size: 24px;
+  margin-left: 20px;
 }
-.index-content {
-}
+
 .index-list {
   display: flex;
   flex-direction: column;
-  padding: 20px 20px;
+  padding: 20px 0px;
 }
 .index-item {
   background: #ffffff;
@@ -36,6 +44,8 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+  border-radius: 20px;
 }
 .index-item-head {
   display: flex;
@@ -82,4 +92,47 @@
   margin-top: 40px;
   font-size: 22px;
   color: #a5a5a5;
+}
+.at-tabs__header {
+  width: 40%;
+}
+.at-tabs__item {
+  font-size: 30px;
+  display: flex;
+  color: #c5c5c5;
+  align-items: center;
+  padding: 10px 0px;
+}
+.at-tabs__item-underline {
+  display: none;
+}
+.at-tabs__item--active {
+  font-size: 40px;
+  color: #333333;
+}
+.index-tabs {
+  padding: 0 40px;
+}
+.at-search-bar::after {
+  display: none;
+}
+.at-tabs__underline {
+  display: none;
+}
+.type-selector {
+  position: absolute;
+  right: 40px;
+  font-size: 22px;
+  color: #333333;
+  margin-top: 24px;
+}
+.selectIcon {
+  width: 20px;
+  height: 10px;
+  margin-left: 10px;
+}
+.picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
