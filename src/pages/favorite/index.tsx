@@ -1,22 +1,14 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 
 import './index.scss'
 import mockData from "./mockData"
-import FavoriteBlock from '../../components/FavoriteBlock';
+import FavoriteBlock from '../../components/FavoriteBlock/FavoriteBlock';
 
 class Index extends Component {
 
-  config: Config = {
-        navigationBarTitleText: '收藏'
-  }
-
   state = {
     data: mockData
-  }
-
-  toDetailPage = (id) => {
-    console.log(id)
   }
 
   render () {
@@ -24,9 +16,8 @@ class Index extends Component {
       <View className='at-row at-row--wrap favorite-containter'>
         {
           this.state.data.map(item => {
-            const {id, imgUrl, title, description, time, type} = item
+            const {id} = item
             return <View 
-                    onClick={() => {this.toDetailPage(id)}}
                     className='at-col at-col-6 at-col--wrap favorite-block-padding' 
                     key={id}>
                         <FavoriteBlock info={item} />

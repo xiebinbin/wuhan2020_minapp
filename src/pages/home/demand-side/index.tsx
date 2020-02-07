@@ -1,16 +1,49 @@
-import Taro, { Component, Config } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { AtNavBar, AtCard } from "taro-ui"
 
+import MyPostBlock from "../../../components/MyPostBlock/MyPostBlock"
 import './index.scss'
 
 class Index extends Component {
-    config: Config = {
-    navigationBarTitleText: '我的'
-  }
 
   handleClick = () => {
-    console.log("Clicked")
+    let editable = this.state.editable
+    this.setState({
+        editable: !editable
+    })
+  }
+
+  state = {
+    editable: true,
+    demandPost: [
+      {
+        id: 1,
+        name: '医院',
+        date: "2010.01.31",
+        content:"safdsfdfasdfsd"
+      },
+      {
+        id: 2,
+        name: '医院',
+        date: "2010.01.31",
+        content:"safdsfdfasdfsd"
+      }
+    ],
+    rescuePost: [
+      {
+        id: 1,
+        name: '医院',
+        date: "2010.01.31",
+        content:"safdsfdfasdfsd"
+      },
+      {
+        id: 2,
+        name: '医院',
+        date: "2010.01.31",
+        content:"safdsfdfasdfsd"
+      }
+    ]
   }
 
   render () {
@@ -20,7 +53,7 @@ class Index extends Component {
             onClickRgIconSt={this.handleClick}
             onClickLeftIcon={()=>{Taro.navigateBack()}}
             color='#000'
-            rightFirstIconType='edit'
+            rightFirstIconType={this.state.editable ? 'check' : 'edit'}
             leftText='< Back'
           /> 
 
@@ -28,30 +61,28 @@ class Index extends Component {
             <Text>我发布的求助</Text>
           </View>
 
-          <View className="demand-card-padding">
-            <AtCard
-              title='医院'
-              extra="2010.01.31"
-            > 
-              <Text>dasfsdfadsfds</Text>
-            </AtCard>
-          </View>
+          {
+            this.state.demandPost.map(item => {
+              return <MyPostBlock 
+                      info={item} 
+                      editable={this.state.editable} 
+                     />
+            })
+          }
 
           <View className="at-article__h2">
             <Text>我发布的援助</Text>
           </View>
 
-          <View className="demand-card-padding">
-            <AtCard
-              title='医院'
-              extra="2010.01.31"
-            > 
-              <Text>dasfsdfadsfds</Text>
-            </AtCard>
-          </View>
-
-      </View>
-          
+          {
+            this.state.rescuePost.map(item => {
+              return <MyPostBlock 
+                        info={item} 
+                        editable={this.state.editable} 
+                      />
+            })
+          }
+      </View>    
     )
   }
 }
