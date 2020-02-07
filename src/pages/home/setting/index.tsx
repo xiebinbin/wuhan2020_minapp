@@ -33,7 +33,7 @@ class Index extends Component {
   }
 
   state = {
-    isOpened: true,
+    isOpened: false,
     editingInfoId:"",
     editingInfo: "",
     username: "哈哈",
