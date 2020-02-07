@@ -3,6 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 
 import './index.scss'
 import mockData from "./mockData"
+import FavoriteBlock from '../../components/FavoriteBlock';
 
 class Index extends Component {
 
@@ -28,22 +29,7 @@ class Index extends Component {
                     onClick={() => {this.toDetailPage(id)}}
                     className='at-col at-col-6 at-col--wrap favorite-block-padding' 
                     key={id}>
-                        <View style="at-article">
-                         <Image 
-                            className="favorite-block-img"
-                            src={imgUrl}
-                          />
-                          <View className="at-article__h3">
-                            <Text>{title}</Text>
-                          </View>
-                          <View className="at-article__info favorite-block-description">
-                            <Text>{description}</Text>
-                          </View>
-                          <View className='at-row at-row__justify--between'>
-                            <View className='at-col at-col-2'>{time}</View>
-                            <View className='at-col at-col-2'>{type}</View>
-                          </View>
-                        </View>
+                        <FavoriteBlock info={item} />
                    </View>
           })
         }
